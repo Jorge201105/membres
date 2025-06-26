@@ -1,7 +1,4 @@
-from membresia import Basico
-from membresia import Familiar
-from membresia import SinConexion
-from membresia import Pro
+from membresia import Basico, Familiar, SinConexion, Pro
 
 def _crear_nueva_membresia(self, nueva_membresia: int):
     if nueva_membresia == 1:
@@ -12,3 +9,4 @@ def _crear_nueva_membresia(self, nueva_membresia: int):
         return SinConexion(self.correo_suscriptor, self.numero_tarjeta)          
     elif nueva_membresia == 4:
         return Pro(self.correo_suscriptor, self.numero_tarjeta)
+ 

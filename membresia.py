@@ -1,7 +1,7 @@
 
 
 from abc import ABC, abstractmethod
-from apoyo_desafio import _crear_nueva_membresia
+
 
 # Clase para genera una membresia generica que sera la clase padre de todas as clases de membresia considerando que es la clase abstracta
 class Membresia(ABC):
@@ -23,7 +23,7 @@ class Membresia(ABC):
     @abstractmethod
     def cambiar_suscripcion(self,nueva_membresia):
         pass
-
+    
 ## ahora se definen las clases que serán ocupadas por las distintas membresias pero no incluiran la totalidad por ello no se adicionan estos metodos a la clase abstracta
 
 class Cancelable(Membresia):
@@ -57,6 +57,7 @@ class Gratis(Membresia):
 
     def cambiar_suscripcion(self, nueva_membresia):
         if nueva_membresia in [1,2,3,4]:
+            from apoyo_desafio import _crear_nueva_membresia   ## me genraba siempre error al tenerlo arriba y consultando, una solucion era dejar este codigo lo mas cerca de el _crear membresia.
             return _crear_nueva_membresia(self,nueva_membresia)
         else:
             return self
@@ -68,6 +69,7 @@ class Basico(Cancelable):
 
     def cambiar_suscripcion(self, nueva_membresia):
         if nueva_membresia in [2,3,4]:
+            from apoyo_desafio import _crear_nueva_membresia
             return _crear_nueva_membresia(self, nueva_membresia)
         else:
             return self
@@ -84,6 +86,7 @@ class Familiar(Cancelable,Con_regalo, Control_parental):
 
     def cambiar_suscripcion(self, nueva_membresia):
         if nueva_membresia in [1,3,4]:
+            from apoyo_desafio import _crear_nueva_membresia
             return _crear_nueva_membresia(self,nueva_membresia)
         else:
             return self
@@ -99,11 +102,12 @@ class SinConexion(Cancelable,Con_regalo,Contenido_offline):
 
     def cambiar_suscripcion(self, nueva_membresia):
         if nueva_membresia in [1,2,4]:
+            from apoyo_desafio import _crear_nueva_membresia
             return _crear_nueva_membresia(self,nueva_membresia)
         else:
             return self
 
-class Pro(Cancelable,Con_regalo,Contenido_offline,Contenido_offline):
+class Pro(Cancelable,Con_regalo,Contenido_offline, Control_parental):
     costo = 7000
     dispositivos = 6
 
@@ -114,13 +118,6 @@ class Pro(Cancelable,Con_regalo,Contenido_offline,Contenido_offline):
 
     def cambiar_suscripcion(self, nueva_membresia: int):
         if nueva_membresia in [1, 2, 3]:
+            from apoyo_desafio import _crear_nueva_membresia
             return _crear_nueva_membresia(self, nueva_membresia)
         return self
-
-
-
-
-
-
-
-
