@@ -1,4 +1,4 @@
-from membresia import Gratis  # o como se llame tu archivo principal de clases  
+from membresia import Gratis  # partimos probando desde gratis
 
 def mostrar_menu():
     print("\n--- Bienvenido a la plataforma de streaming ---")
@@ -17,7 +17,7 @@ def mostrar_detalles(membresia):
     print(f"Costo mensual: ${membresia.costo}")
 
     # Verificar si tiene días de regalo
-    if hasattr(membresia, 'dias_regalo'):
+    if hasattr(membresia, 'dias_regalo'):## se usa esta funcion integrada de python hasattr para ver si membresia tien el atributo de dias_regalo, obviamente no se me ocurrio a mi, me ayude con sr gpt
         print(f"Días de regalo: {membresia.dias_regalo}")
 
 if __name__ == "__main__":
